@@ -1,9 +1,9 @@
-# 🔥 pfSense Firewall Configuration & Testing
+# pfSense Firewall Configuration & Testing
 ## Configuring and Verifying Real Firewall Rules
 
 ---
 
-## 📌 Overview
+## Overview
 This project covers hands-on pfSense firewall
 configuration — writing real firewall rules,
 fixing rule ordering issues, verifying rules
@@ -13,7 +13,7 @@ homelab environment.
 
 ---
 
-## 🎯 Objectives
+## Objectives
 - Access and explore pfSense web interface
 - Review existing WAN and LAN firewall rules
 - Fix and activate SSH block rule
@@ -23,7 +23,7 @@ homelab environment.
 
 ---
 
-## 🖥️ Homelab Environment
+## Homelab Environment
 | VM | IP Address | Role |
 |---|---|---|
 | pfSense | 192.168.10.1 | Firewall and router |
@@ -33,7 +33,7 @@ homelab environment.
 
 ---
 
-## 🔥 Firewall Rules Configured
+## Firewall Rules Configured
 
 ### Rule 1 — Block SSH from Kali to Ubuntu
 | Field | Value |
@@ -58,7 +58,7 @@ homelab environment.
 
 ---
 
-## 🔬 Testing Methodology
+## Testing Methodology
 
 ### Test 1 — SSH Block Verification
 Command run from Kali:
@@ -78,7 +78,7 @@ Verdict: BLOCKED successfully
 
 ---
 
-## 📸 Results
+## Results
 
 ### pfSense Dashboard
 
@@ -131,7 +131,7 @@ Verdict: BLOCKED successfully
 
 ---
 
-## 🧠 Analysis
+## Analysis
 
 ### Finding 1 — Rule Order is Critical
 Initially the SSH block rule was not working
@@ -179,7 +179,7 @@ prevent attackers from faking internal IP addresses.
 
 ---
 
-## 🔐 Security Lessons Learned
+## Security Lessons Learned
 
 | Lesson | Explanation |
 |---|---|
@@ -191,7 +191,7 @@ prevent attackers from faking internal IP addresses.
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 Successfully configured and verified two firewall
 rules in pfSense blocking SSH and ICMP traffic
 from Kali Linux to Ubuntu Server. Firewall logs
@@ -211,5 +211,5 @@ match winning.
 
 ## 👤 Author
 Fredrick Agufenwa
+
 Cybersecurity Student | SOC & Threat Detection
-#50DaysOfCybersecurity
