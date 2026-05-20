@@ -83,7 +83,7 @@ Verdict: BLOCKED successfully
 ### pfSense Dashboard
 
 
-![Dashboard](screenshots/pfsense_dashboard.png)
+![Dashboard](screenshots/pfSense_dashboard.png)
 
 
 
