@@ -5,7 +5,7 @@
 
 ## Overview
 This project covers hands-on pfSense firewall
-configuration — writing real firewall rules,
+configuration; writing real firewall rules,
 fixing rule ordering issues, verifying rules
 work correctly and analyzing firewall logs.
 All testing was done using real VMs in a
@@ -133,32 +133,17 @@ Verdict: BLOCKED successfully
 
 ## Analysis
 
-### Finding 1 — Rule Order is Critical
-Initially the SSH block rule was not working
-because the Default Allow LAN rule was above it.
-pfSense processes rules top to bottom — first
-match wins. Moving the block rule above the
-allow rule fixed the issue immediately.
-
-Incorrect order:
-Rule 4 ALLOW LAN subnets to Any — matched first
-Rule 3 BLOCK Kali to Ubuntu port 22 — never reached
-
-Correct order:
-Rule 3 BLOCK Kali to Ubuntu port 22 — matched first
-Rule 4 ALLOW LAN subnets to Any — only if not blocked
-
-### Finding 2 — BLOCK vs REJECT Behaviour
+### Finding 1 — BLOCK vs REJECT Behaviour
 pfSense BLOCK action silently drops packets:
 - SSH attempt hung with no response
 - Ping received zero replies after 5 minutes
 - Attacker gets no information about why it failed
 
 This is more secure than REJECT which sends
-an immediate refusal — giving attackers
+an immediate refusal, giving attackers
 confirmation that a firewall exists.
 
-### Finding 3 — Firewall Logs Confirmed Blocking
+### Finding 2 — Firewall Logs Confirmed Blocking
 22 blocked log entries were recorded showing:
 - Source: 192.168.10.102 (Kali)
 - Destination: 192.168.20.101 (Ubuntu)
@@ -166,10 +151,9 @@ confirmation that a firewall exists.
 - Rule: USER_RULE (our custom block rule)
 
 TCP-S means pfSense blocked the TCP SYN packet
-before the connection was even established —
-the most efficient point to block traffic.
+before the connection was even established, which is the most efficient point to block traffic.
 
-### Finding 4 — WAN Default Security
+### Finding 3 — WAN Default Security
 Two default WAN rules were already in place:
 - Block RFC 1918 private networks — prevents IP spoofing
 - Block bogon networks — blocks reserved IP ranges
@@ -196,7 +180,7 @@ Successfully configured and verified two firewall
 rules in pfSense blocking SSH and ICMP traffic
 from Kali Linux to Ubuntu Server. Firewall logs
 confirmed 22 blocked SSH attempts. Key lesson
-learned — rule order is critical in pfSense as
+learned is that the rule order is critical in pfSense as
 rules are evaluated top to bottom with first
 match winning.
 
